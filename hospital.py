@@ -1,8 +1,8 @@
 from funciones import *
-from funciones import *
+from funciones2 import *
 
 ### Inicializamos una farmacia ###
-farmacia = Farmacia([], [], [], [], []) 
+hospital = Hospital([], [], [], [], [])
 
 ### Creamos las habitaciones ###
 habitacion1 = Habitacion("1", "Publica", [], "Si")
@@ -11,8 +11,15 @@ habitacion2 = Habitacion("2", "Publica", [], "Si")
 ### Creamos los pacientes y los añadimos a la lista de pacientes de la farmacia ###
 paciente1 = Paciente("1", "1", "1", "1", "1", [])
 paciente2 = Paciente("2", "2", "2", "2", "2", [])
-farmacia.listaPacientes.append(paciente1)
-farmacia.listaPacientes.append(paciente2)
+
+hospital.listaPacientes.append(paciente1)
+hospital.listaPacientes.append(paciente2)
+
+### Creamos los medicos y los añadimos a la lista de medicos del hosptial ###
+medico1 = Medico("1", "1", "1", "1", "1", "1", [], "1")
+medico2 = Medico("2", "2", "2", "2", "2", "2", [], "2")
+hospital.listaMedicos.append(medico1)
+hospital.listaMedicos.append(medico2)
 
 ### Bucle para el menu ###
 condicion = True
@@ -178,12 +185,43 @@ while (condicion):
             print("")
             print("9.- Salir")
             opcionSubmenu = input("Introduce un numero: ")
+            
             if (opcionSubmenu == "1"):
-                break
+                numeroIdentificacionMedico=input("Introduce el numero de identificación del medico: ")
+                medicoEncontrado = ""
+                for medico in hospital.listaMedicos:
+                    if (medico.numeroIdentificacion == numeroIdentificacionMedico):
+                        medicoEncontrado = medico
+                        break
+                
+                if (medicoEncontrado!=""):
+                    numeroIdentificacionPaciente=input("Introduce el numero de identificación del paciente: ")
+
+                    for paciente in hospital.listaPacientes:
+                        if (paciente.numeroIdentificacion == numeroIdentificacionPaciente):
+                            medicoEncontrado.asignarPaciente(numeroIdentificacionPaciente, hospital.listaPacientes)
+                            break
+                else:
+                    print("El medico no ha sido encontrado")
+                     
+            
             elif (opcionSubmenu == "2"):
-                break
+                numeroIdentificacion=input("Introduce el numero de identificación: ")                
+                for paciente in medico.pacientesAsignados:
+                    if numeroIdentificacion == paciente.numeroIdentificacion:
+                        medico.atenderPaciente(paciente)
+                        break
+
+
             elif (opcionSubmenu == "3"):
-                break
+                numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
+                for medico in hospital.listaMedicos:
+                    if (medico.numeroIdentificacion == numeroIdentificacion):
+                        medicoEncontrdo = True
+                        medico.actualizarInformacion()
+                        break
+                
+
             elif (opcionSubmenu == "4"):
                 break
             elif (opcionSubmenu == "5"):
