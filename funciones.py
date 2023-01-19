@@ -16,24 +16,26 @@ class Paciente:
         self.historialMedico = historialMedico
 
     def actualizarInformacion(self):
-                print("[    DATOS     ]")
-                self.nombre = input("Nombre: ")
-                self.apellido1 = input("Primer Apellido: ")
-                self.apellido2 = input("Segundo Apellido: ")
-                self.fechaNacimiento = input("Fecha de nacimiento(DD/MM/YYYY): ")
-                self.numeroIdentificacion = input("Numero Identificacion: ")                
+        print("[    DATOS     ]")
+        self.nombre = input("Nombre: ")
+        self.apellido1 = input("Primer Apellido: ")
+        self.apellido2 = input("Segundo Apellido: ")
+        self.fechaNacimiento = input("Fecha de nacimiento(DD/MM/YYYY): ")
+        self.numeroIdentificacion = input("Numero Identificacion: ")
+        print("[    DATOS CAMBIADOS     ]")
+        print("")
 
 
     def obtenerInformacion(self):
-        numeroIdentificacion = input("Numero de identificacion del paciente: ")
-        for paciente in Farmacia.listaPacientes:
-            if (paciente.numeroIdentificacion == numeroIdentificacion):
-                print("[    DATOS     ]")
-                print
-                apellido1 = 
-                apellido2 = input("Segundo Apellido: ")
-                fechaNacimiento = input("Fecha de nacimiento(DD/MM/YYYY): ")
-                numeroIdentificacion = input("Numero Identificacion: ")
+        print("[    DATOS     ]")
+        print("Nombre: ", self.nombre)
+        print("Apellido 1: ", self.apellido1)
+        print("Apellido 2: ", self.apellido2)
+        print("Fecha de nacimiento: ", self.fechaNacimiento)
+        print("Numero de identificacion: ", self.numeroIdentificacion)
+        print("Historial medico:")
+        print(self.historialMedico)
+
 
 class Habitacion:
     def __init__(self, numero, tipo, pacientesAsignados, disponibilidad):
@@ -42,13 +44,11 @@ class Habitacion:
         self.pacientesAsignados = pacientesAsignados
         self.disponibilidad = disponibilidad
 
-    def asignarPaciente(self):
-        pass
+    def asignarPaciente(self, numeroIdentificacion):
+        self.pacientesAsignados.append(numeroIdentificacion)
 
     def liberarHabitacion(self):
         pass
 
     def verificarDisponibilidad(self):
         pass
-
-
