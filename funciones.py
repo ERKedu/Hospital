@@ -1,4 +1,4 @@
-class Farmacia:
+class Hospital:
     def __init__(self, listaMedicos, listaPacientes, listaConsultas, listaHabitaciones, listaEnfermeros):
         self.listaMedicos = listaMedicos
         self.listaPacientes = listaPacientes
@@ -45,16 +45,28 @@ class Habitacion:
         self.disponibilidad = disponibilidad
 
     def asignarPaciente(self, numeroIdentificacion):
-        if self.disponibilidad== True:
-            self.pacientesAsignados= numeroIdentificacion
-            self.disponibilidad== False
+        self.pacientesAsignados.append(numeroIdentificacion)
 
-        else:
-            print("Habitación ocupada")
-
-
-    def liberarHabitacion(self):
-        pass
+    def liberarHabitacion(self, paciente):
+        self.pacientesAsignados.remove(paciente)
 
     def verificarDisponibilidad(self):
+        return self.disponibilidad
+
+class Enfermero:
+    def __init__(self, nombre, apellido1, apellido2, numeroIdentificacion, horarioTrabajo, pacientesAsignados):
+        self.nombre = nombre
+        self.apellido1 = apellido1
+        self.apellido2 = apellido2
+        self.numeroIdentificacion = numeroIdentificacion
+        self.horarioTrabajo = horarioTrabajo
+        self.pacientesAsignados = pacientesAsignados
+
+    def asignarPaciente(self):
+        pass
+
+    def atenderPaciente(self):
+        pass
+
+    def actualizarInformacion(self):
         pass
