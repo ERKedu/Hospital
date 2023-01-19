@@ -154,7 +154,7 @@ while (condicion):
                         
                     else:
                         print("")
-                        print("[    NO ENCONTRADO   ]")
+                        print("[    PACIENTE NO ENCONTRADO   ]")
                         print("")
                         print("En 2 segundos volveras al menu")
                         time.sleep(2)
@@ -187,7 +187,7 @@ while (condicion):
                     
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
@@ -220,7 +220,7 @@ while (condicion):
 
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
