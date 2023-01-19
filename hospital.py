@@ -5,8 +5,11 @@ from funciones import *
 farmacia = Farmacia([], [], [], [], []) 
 
 ### Creamos las habitaciones ###
-habitacion1 = Habitacion("1", "Publica", [], "Si")
-habitacion2 = Habitacion("2", "Publica", [], "Si")
+disponibilidad = True
+habitacion1 = Habitacion("1", "Publica", [], disponibilidad)
+habitacion2 = Habitacion("2", "Publica", [], disponibilidad)
+farmacia.listaHabitaciones.append(habitacion1) 
+farmacia.listaHabitaciones.append(habitacion2)
 
 ### Creamos los pacientes y los añadimos a la lista de pacientes de la farmacia ###
 paciente1 = Paciente("1", "1", "1", "1", "1", [])
@@ -116,19 +119,11 @@ while (condicion):
                 pacienteEncontrado = False
                 for paciente in farmacia.listaPacientes:
                     if (paciente.numeroIdentificacion == numeroIdentificacion):
-                        pacienteEncontrado = True
-
-                if (pacienteEncontrado == True):
-                    print("")
-                    print("[    PACIENTE ENCONTRADO     ]")
-                    print("")
-                    habitacion1.asignarPaciente(paciente)
-
-                else:
-                    print("")
-                    print("[    NO ENCONTRADO   ]")
-                    print("")
-
+                        numeroHabitacion= input("Numero habitacion: ")
+                        for habitacion in farmacia.listaHabitaciones:
+                            if numeroHabitacion == habitacion.numero:
+                                habitacion.asignarPaciente(numeroIdentificacion)
+               
             ### Liberar habitacion ###
             elif (opcionSubmenu == "4"):
                 break

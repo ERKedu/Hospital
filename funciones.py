@@ -45,7 +45,13 @@ class Habitacion:
         self.disponibilidad = disponibilidad
 
     def asignarPaciente(self, numeroIdentificacion):
-        self.pacientesAsignados.append(numeroIdentificacion)
+        if self.disponibilidad== True:
+            self.pacientesAsignados= numeroIdentificacion
+            self.disponibilidad== False
+
+        else:
+            print("Habitación ocupada")
+
 
     def liberarHabitacion(self):
         pass
