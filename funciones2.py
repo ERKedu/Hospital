@@ -1,32 +1,30 @@
 class Medico: 
-    def __init__(self, nombre, apellido1, apellido2, especialidad, numeroDeIdentificacion, horarioTrabajo, pacientesAsignados, consulta):
+    def __init__(self, nombre, apellido1, apellido2, especialidad, numeroIdentificacion, horarioTrabajo, pacientesAsignados, consulta):
         self.nombre=nombre
         self.apellido1=apellido1
         self.apellido2=apellido2
         self.especialidad=especialidad
-        self.numeroDeIdentificacion=numeroDeIdentificacion
+        self.numeroIdentificacion=numeroIdentificacion
         self.horarioTrabajo=horarioTrabajo
         self.pacientesAsignados=pacientesAsignados
         self.consulta=consulta
 
-    def asignarPaciente(self, numeroDeIdentificacion, ):          
+    def asignarPaciente(self, numeroIdentificacion, listaPacientes): 
         for paciente in listaPacientes:
-            if numeroDeIdentificacion == paciente.numeroDeIdentificacion:
-                pacientesAsignados.append(paciente)
+            if numeroIdentificacion == paciente.numeroIdentificacion:       
+                self.pacientesAsignados.append(paciente)
 
 
-    def atenderPaciente(self, numeroDeIdentificacion):
-        for paciente in self.pacientesAsignados:
-            if numeroDeIdentificacion == paciente.numeroDeIdentificacion:
-                print ("Visita del médico ", nombre)
+    def atenderPaciente(self, paciente):
+        print ("Visita del médico ", paciente.nombre)
         
 
-    def actualizarInformacion(self)    
+    def actualizarInformacion(self):    
         nombre=input("Introduce el nombre: ")
         apellido1=input("Introduce el apellido1: ")
         apellido2=input("Introduce el apellido2: ")
         especialidad=input("Introduce la especialidad: ")
-        numeroDeIdentificacion=input("Introduce el número de identificación: ")
+        numeroIdentificacion=input("Introduce el número de identificación: ")
         horarioTrabajo=input("Introduce el horario de trabajo: ")
         consulta=input("Introduce la consulta: ")
                     
@@ -34,9 +32,8 @@ class Medico:
         self.apellido1=apellido1
         self.apellido2=apellido2
         self.especialidad=especialidad
-        self.numeroDeIdentificacion=numeroDeIdentificacion
+        self.numeroIdentificacion=numeroIdentificacion
         self.horarioTrabajo=horarioTrabajo
-        self.pacientesAsignados=pacientesAsignados
         self.consulta=consulta
 
         print("Información actualizada")
