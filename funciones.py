@@ -62,7 +62,10 @@ class Enfermero:
         self.horarioTrabajo = horarioTrabajo
         self.pacientesAsignados = pacientesAsignados
 
-    def asignarPaciente(self):
+    def asignarPaciente(self, paciente= Paciente):
+        self.pacientesAsignados.append(paciente)
+        for x in self.pacientesAsignados:
+            print(x.nombre)
         pass
 
     def atenderPaciente(self):

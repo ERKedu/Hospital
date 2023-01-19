@@ -2,7 +2,7 @@ from funciones import *
 from funciones import *
 import time
 
-### Inicializamos una farmacia ###
+### Inicializamos una hospital ###
 hospital = Hospital([], [], [], [], []) 
 
 ### Creamos las habitaciones y las añadimos a la lista ###
@@ -18,6 +18,13 @@ paciente1 = Paciente("1", "1", "1", "1", "1", [])
 paciente2 = Paciente("2", "2", "2", "2", "2", [])
 hospital.listaPacientes.append(paciente1)
 hospital.listaPacientes.append(paciente2)
+
+
+###Creamos los enefremeros
+enfermero1= Enfermero("Luisa", "Martinez", "Sanchez", "1", "9:00-17:00", [])
+enfermero2= Enfermero("Carlos", "Esun", "Cohcebomba", "2", "17:00-9:00", [])
+hospital.listaEnfermeros.append(enfermero1)
+hospital.listaEnfermeros.append(enfermero2)
 
 ### Bucle para el menu ###
 condicion = True
@@ -125,7 +132,7 @@ while (condicion):
 
 
 
-            ### Asignar paciente ###
+            ### Asignar paciente Habitaciones###
             elif (opcionSubmenu == "3"):
                 numeroIdentificacion = input("Numero de identificacion del paciente: ")
                 pacienteEncontrado = False
@@ -207,8 +214,28 @@ while (condicion):
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
 
-            ### Asignar paciente ###
+            ### Asignar paciente Enfermero###
             elif (opcionSubmenu == "6"):
+                numeroPaciente= input("Introduzca el numero del paciente: ")
+                for x in hospital.listaPacientes:
+                    if x.numeroIdentificacion == numeroPaciente:
+                        print("")
+                        print("[    PACIENTE ENCONTRADO     ]")
+                        print("")
+                        numeroEnfermero= input("Introduzca el nuemro del Enfermero: ")
+                        for y in hospital.listaEnfermeros:
+                            if y.numeroIdentificacion == numeroEnfermero:
+                                print("[    ENFERMERO ENCONTRADO     ]")
+                                y.asignarPaciente(x)
+
+                            else:
+                                print("[    ENFERMERO no ENCONTRADO     ]")
+
+                    else:
+                        print("")
+                        print("[    PACIENTE NO ENCONTRADO     ]")
+                        print("")
+
                 break
 
             ### Atender paciente ###
