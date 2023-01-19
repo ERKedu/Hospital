@@ -99,16 +99,11 @@ while (condicion):
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
                     paciente.actualizarInformacion()
-                    print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
 
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
 
 
 
@@ -127,16 +122,11 @@ while (condicion):
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
                     paciente.obtenerInformacion()
-                    print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
 
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
 
 
 
@@ -148,20 +138,40 @@ while (condicion):
                 for paciente in hospital.listaPacientes:
                     if (paciente.numeroIdentificacion == numeroIdentificacion):
                         pacienteEncontrado = True
+                        break
 
                 if (pacienteEncontrado == True):
                     print("")
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
-                    habitacion1.asignarPaciente(paciente)
-                    
+                    numero = input("Numero de habitacion: ")
+                    habitacionEncontrada = False
+                    for habitacion in hospital.listaHabitaciones:
+                        if (habitacion.numero == numero):
+                            habitacionEncontrada = True    
+                            break
+
+                    if (habitacionEncontrada == True):
+                        print("")
+                        print("[    HABITACION ENCONTRADA     ]")
+                        print("")
+                        habitacion.asignarPaciente(paciente)
+                        print("[    HABITACION ASIGNADA     ]")
+                        print("")
+                        print("En 2 segundos volveras al menu")
+                        time.sleep(2)
+                        
+                    else:
+                        print("")
+                        print("[    PACIENTE NO ENCONTRADO   ]")
+                        print("")
+                        print("En 2 segundos volveras al menu")
+                        time.sleep(2)
 
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
 
             ### Liberar habitacion ###
             elif (opcionSubmenu == "4"):
@@ -172,20 +182,21 @@ while (condicion):
                         habitacionEncontrada = True
                         for paciente in habitacion.pacientesAsignados:
                             habitacion.liberarHabitacion(paciente)
-                print("[    HABITACION LIBERADA     ]")
+                            break
 
                 if (habitacionEncontrada == True):
                     print("")
                     print("[    HABITACION ENCONTRADA     ]")
                     print("")
                     habitacion.liberarHabitacion()
+                    print("[    HABITACION LIBERADA     ]")
                     print("")
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
                     
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
@@ -218,7 +229,7 @@ while (condicion):
 
                 else:
                     print("")
-                    print("[    NO ENCONTRADO   ]")
+                    print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
