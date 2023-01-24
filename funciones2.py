@@ -60,10 +60,10 @@ class Farmacia:
         self.medicamentosDisponibles[medicamento] = 1
         
 
-    def eliminarMedicamento():
+    def eliminarMedicamento(self):
         print("El medicamento no existe")
         
 
-    def obtenerMedicamento():
+    def obtenerMedicamento(self):
         print("El medicamento no existe")
         
