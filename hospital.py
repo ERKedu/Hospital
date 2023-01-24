@@ -156,7 +156,7 @@ while (condicion):
                         print("[    HABITACION ENCONTRADA     ]")
                         print("")
                         habitacion.asignarPaciente(paciente)
-                        print("[    HABITACION ASIGNADA     ]")
+                        print("[    HABITACION ASIGNADA       ]")
                         print("")
                         print("En 2 segundos volveras al menu")
                         time.sleep(2)
@@ -180,19 +180,18 @@ while (condicion):
                 for habitacion in hospital.listaHabitaciones:
                     if (habitacion.numero == numero):
                         habitacionEncontrada = True
-                        for paciente in habitacion.pacientesAsignados:
-                            habitacion.liberarHabitacion(paciente)
-                            break
+                        break
 
                 if (habitacionEncontrada == True):
                     print("")
                     print("[    HABITACION ENCONTRADA     ]")
                     print("")
-                    habitacion.liberarHabitacion()
-                    print("[    HABITACION LIBERADA     ]")
-                    print("")
-                    print("En 2 segundos volveras al menu")
-                    time.sleep(2)
+                    for paciente in habitacion.pacientesAsignados:
+                        habitacion.liberarHabitacion(paciente)
+                        print("[    HABITACION LIBERADA     ]")
+                        print("")
+                        print("En 2 segundos volveras al menu")
+                        time.sleep(2)
                     
                 else:
                     print("")
@@ -236,25 +235,39 @@ while (condicion):
 
             ### Asignar paciente Enfermero###
             elif (opcionSubmenu == "6"):
-                numeroPaciente= input("Introduzca el numero del paciente: ")
-                for x in hospital.listaPacientes:
-                    if x.numeroIdentificacion == numeroPaciente:
+                numeroIdentificacion = input("Numero de identificacion del enfermero: ")
+                enfermeroEncontrado = False
+                for enfermero in hospital.listaEnfermeros:
+                    if (enfermero.numeroIdentificacion == numeroIdentificacion):
+                        enfermeroEncontrado = True
+                        break
+
+                if (enfermeroEncontrado == True):
+                    print("")
+                    print("[    ENFERMERO ENCONTRADO     ]")
+                    print("")
+                    pacienteEncontrado = False
+                    numPaciente = input("Numero de identificacion del paciente: ")
+                    for paciente in hospital.listaPacientes:
+                        if (paciente.numeroIdentificacion == numPaciente):
+                            pacienteEncontrado = True
+                            break
+                    if (pacienteEncontrado == True):
                         print("")
                         print("[    PACIENTE ENCONTRADO     ]")
                         print("")
-                        numeroEnfermero= input("Introduzca el nuemro del Enfermero: ")
-                        for y in hospital.listaEnfermeros:
-                            if y.numeroIdentificacion == numeroEnfermero:
-                                print("[    ENFERMERO ENCONTRADO     ]")
-                                y.asignarPaciente(x)
-
-                            else:
-                                print("[    ENFERMERO no ENCONTRADO     ]")
+                        enfermero.asignarPaciente(paciente)
 
                     else:
                         print("")
                         print("[    PACIENTE NO ENCONTRADO     ]")
-                        print("")
+                        print("")                        
+
+
+                else:
+                    print("")
+                    print("[    ENFERMERO NO ENCONTRADO   ]")
+                    print("")
 
                 break
 
@@ -264,6 +277,24 @@ while (condicion):
 
             ### Actualizar informacion ###
             elif (opcionSubmenu == "8"):
+                numeroIdentificacion = input("Numero de identificacion del enfermero: ")
+                enfermeroEncontrado = False
+                for enfermero in hospital.listaEnfermeros:
+                    if (enfermero.numeroIdentificacion == numeroIdentificacion):
+                        enfermeroEncontrado = True
+                        break
+
+                if (enfermeroEncontrado == True):
+                    print("")
+                    print("[    ENFERMERO ENCONTRADO     ]")
+                    print("")
+                    enfermero.actualizarInformacion()
+
+                else:
+                    print("")
+                    print("[    ENFERMERO NO ENCONTRADO   ]")
+                    print("")
+
                 break
 
             ### Salir ###
