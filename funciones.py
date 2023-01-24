@@ -46,9 +46,11 @@ class Habitacion:
 
     def asignarPaciente(self, numeroIdentificacion):
         self.pacientesAsignados.append(numeroIdentificacion)
+        self.disponibilidad = False
 
     def liberarHabitacion(self, paciente):
         self.pacientesAsignados.remove(paciente)
+        self.disponibilidad = True
 
     def verificarDisponibilidad(self):
         return self.disponibilidad
@@ -62,14 +64,19 @@ class Enfermero:
         self.horarioTrabajo = horarioTrabajo
         self.pacientesAsignados = pacientesAsignados
 
-    def asignarPaciente(self, paciente= Paciente):
+    def asignarPaciente(self, paciente):
         self.pacientesAsignados.append(paciente)
-        for x in self.pacientesAsignados:
-            print(x.nombre)
-        pass
+
 
     def atenderPaciente(self):
         pass
 
     def actualizarInformacion(self):
-        pass
+        print("[    DATOS     ]")
+        self.nombre = input("Nombre: ")
+        self.apellido1 = input("Primer Apellido: ")
+        self.apellido2 = input("Segundo Apellido: ")
+        self.numeroIdentificacion = input("Numero Identificacion: ")
+        self.horarioTrabajo = input("Horario trabajo: ")
+        print("[    DATOS CAMBIADOS     ]")
+        print("")
