@@ -28,12 +28,21 @@ hospital.listaMedicos.append(medico1)
 hospital.listaMedicos.append(medico2)
 
 
-###Creamos los enefremeros
+### Creamos los enefremeros ###
 enfermero1= Enfermero("Luisa", "Martinez", "Sanchez", "1", "9:00-17:00", [])
 enfermero2= Enfermero("Carlos", "Esun", "Cohcebomba", "2", "17:00-9:00", [])
 hospital.listaEnfermeros.append(enfermero1)
 hospital.listaEnfermeros.append(enfermero2)
 
+
+### Creamos las consultas ###
+consulta1= Consulta("1","")
+consulta2= Consulta("2","")
+hospital.listaConsultas.append(consulta1)
+hospital.listaConsultas.append(consulta2)
+
+### Creamos diccionario de medicamentos ###
+farmacia1 = Farmacia({})
 
 ### Bucle para el menu ###
 condicion = True
@@ -383,24 +392,63 @@ while (condicion):
                 numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
                 for medico in hospital.listaMedicos:
                     if (medico.numeroIdentificacion == numeroIdentificacion):
-                        medicoEncontrdo = True
                         medico.actualizarInformacion()
                         break
                 
 
             elif (opcionSubmenu == "4"):
-                break
+                numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
+                num=input("Introduce el numero de consulta:  ")
+
+                for consulta in hospital.listaConsultas:
+                    if (consulta.numero == num):
+                        for medico in hospital.listaMedicos:
+                            if (medico.numeroIdentificacion == numeroIdentificacion):
+                                consulta.asignarMedico(medico)
+                                break
+
             elif (opcionSubmenu == "5"):
-                break
+                num=input("Introduce el numero de consulta:  ")
+
+                for consulta in hospital.listaConsultas:
+                    if (consulta.numero == num):
+                        for medico in hospital.listaMedicos:
+                            if (medico.numeroIdentificacion == numeroIdentificacion):
+                                consulta.liberarConsulta(medico)
+                                break
+
+
             elif (opcionSubmenu == "6"):
+                medicamento = input ("Introduce el nombre del medicamento: ")
+            
+                if (medicamento in farmacia1.medicamentosDisponibles):
+                    farmacia1.medicamentosDisponibles[medicamento]+=1
+                else:
+                    farmacia1.agregarMedicamento(medicamento)
                 break
+
             elif (opcionSubmenu == "7"):
-                break
+                medicamento = input ("Introduce el nombre del medicamento: ")
+                
+                if (medicamento in farmacia1.medicamentosDisponibles):
+                    del farmacia1.medicamentosDisponibles[medicamento]
+                else:
+                    farmacia1.eliminarMedicamento()
+                    break
+
             elif (opcionSubmenu == "8"):
+                medicamento = input ("Introduce el nombre del medicamento: ")
+                
+                if (medicamento in farmacia1.medicamentosDisponibles and farmacia1.medicamentosDisponibles[medicamento]>0):
+                    farmacia1.medicamentosDisponibles[medicamento]-=1
+                else:
+                    farmacia1.obtenerMedicamento()
+                    break
                 break
+
             elif (opcionSubmenu == "9"):
                 condicion2 =  False
-    ### SUBENU MEDICO ###
+    ### SUBMENU MEDICO ###
     ### SALIR ###
     elif (opcionMenu == "3"):
         condicion =  False

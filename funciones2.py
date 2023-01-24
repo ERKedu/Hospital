@@ -47,6 +47,23 @@ class Consulta:
         self.medicoAsignado = Medico
         Medico.consulta = self
 
-    def liberarConsulta(self, Medico, listaMedicos):
+    def liberarConsulta(self, Medico):
         self.medicoAsignado = None
         Medico.consulta = None
+
+
+class Farmacia:
+    def __init__(self, medicamentosDisponibles):
+        self.medicamentosDisponibles = medicamentosDisponibles
+
+    def agregarMedicamento(self, medicamento):
+        self.medicamentosDisponibles[medicamento] = 1
+        
+
+    def eliminarMedicamento():
+        print("El medicamento no existe")
+        
+
+    def obtenerMedicamento():
+        print("El medicamento no existe")
+        
