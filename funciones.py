@@ -68,7 +68,8 @@ class Enfermero:
         self.pacientesAsignados.append(paciente)
 
 
-    def atenderPaciente(self):
+    def atenderPaciente(self, paciente):
+        paciente.historialMedico.append(input("Actualize el historial del paciente "+paciente.nombre+" "))
         pass
 
     def actualizarInformacion(self):

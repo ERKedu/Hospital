@@ -273,9 +273,34 @@ while (condicion):
 
             ### Atender paciente ###
             elif (opcionSubmenu == "7"):
-                break
+                numeroPaciente= input("Introduzca el numero del paciente: ")
+                for x in hospital.listaPacientes:
+                    if x.numeroIdentificacion == numeroPaciente:
+                        print("")
+                        print("[    PACIENTE ENCONTRADO     ]")
+                        print("")
+                        numeroEnfermero= input("Introduzca el nuemro del Enfermero: ")
+                        for y in hospital.listaEnfermeros:
+                            if y.numeroIdentificacion == numeroEnfermero:
+                                print("")
+                                print("[    ENFERMERO ENCONTRADO     ]")
+                                print("")
+                                y.atenderPaciente(x)
+                                break
+
+                            else:
+                                print("")
+                                print("[    ENFERMERO no ENCONTRADO     ]")
+                                print("")
+
+                    else:
+                        print("")
+                        print("[    PACIENTE NO ENCONTRADO     ]")
+                        print("")
+                    break
 
             ### Actualizar informacion ###
+
             elif (opcionSubmenu == "8"):
                 numeroIdentificacion = input("Numero de identificacion del enfermero: ")
                 enfermeroEncontrado = False
