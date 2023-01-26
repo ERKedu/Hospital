@@ -44,9 +44,18 @@ class Habitacion:
         self.pacientesAsignados = pacientesAsignados
         self.disponibilidad = disponibilidad
 
-    def asignarPaciente(self, numeroIdentificacion):
-        self.pacientesAsignados.append(numeroIdentificacion)
-        self.disponibilidad = False
+    def asignarPaciente(self, paciente):
+        longitud = len(self.pacientesAsignados)
+        if (longitud < 1 and self.tipo == "privada"):
+            self.pacientesAsignados.append(paciente)
+            self.disponibilidad = False
+
+        elif (longitud < 2 and self.tipo == "compartida"):
+            self.pacientesAsignados.append(paciente)
+
+        if (len(self.pacientesAsignados) >= 2 and self.tipo == "compartida"):
+            self.disponibilidad = False
+
 
     def liberarHabitacion(self, paciente):
         self.pacientesAsignados.remove(paciente)

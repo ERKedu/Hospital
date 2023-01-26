@@ -7,8 +7,9 @@ hospital = Hospital([], [], [], [], [])
 
 ### Creamos las habitaciones y las añadimos a la lista ###
 disponibilidad = True
-habitacion1 = Habitacion("1", "Publica", [], disponibilidad)
-habitacion2 = Habitacion("2", "Publica", [], disponibilidad)
+
+habitacion1 = Habitacion("1", "compartida", [], disponibilidad)
+habitacion2 = Habitacion("2", "privada", [], disponibilidad)
 hospital.listaHabitaciones.append(habitacion1)
 hospital.listaHabitaciones.append(habitacion2)
 
@@ -16,9 +17,13 @@ hospital.listaHabitaciones.append(habitacion2)
 ### Creamos los pacientes y los añadimos a la lista de pacientes de la farmacia ###
 paciente1 = Paciente("1", "1", "1", "1", "1", [])
 paciente2 = Paciente("2", "2", "2", "2", "2", [])
+paciente3 = Paciente("3", "3", "3", "3", "3", [])
+
 
 hospital.listaPacientes.append(paciente1)
 hospital.listaPacientes.append(paciente2)
+hospital.listaPacientes.append(paciente3)
+
 
 
 ### Creamos los medicos y los añadimos a la lista de medicos del hosptial ###
@@ -28,21 +33,12 @@ hospital.listaMedicos.append(medico1)
 hospital.listaMedicos.append(medico2)
 
 
-### Creamos los enefremeros ###
+###Creamos los enefremeros
 enfermero1= Enfermero("Luisa", "Martinez", "Sanchez", "1", "9:00-17:00", [])
 enfermero2= Enfermero("Carlos", "Esun", "Cohcebomba", "2", "17:00-9:00", [])
 hospital.listaEnfermeros.append(enfermero1)
 hospital.listaEnfermeros.append(enfermero2)
 
-
-### Creamos las consultas ###
-consulta1= Consulta("1","")
-consulta2= Consulta("2","")
-hospital.listaConsultas.append(consulta1)
-hospital.listaConsultas.append(consulta2)
-
-### Creamos diccionario de medicamentos ###
-farmacia1 = Farmacia({})
 
 ### Bucle para el menu ###
 condicion = True
@@ -137,9 +133,6 @@ while (condicion):
                     print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
 
-
-
-
             ### Asignar paciente Habitaciones###
             elif (opcionSubmenu == "3"):
                 numeroIdentificacion = input("Numero de identificacion del paciente: ")
@@ -164,15 +157,27 @@ while (condicion):
                         print("")
                         print("[    HABITACION ENCONTRADA     ]")
                         print("")
-                        habitacion.asignarPaciente(paciente)
-                        print("[    HABITACION ASIGNADA       ]")
+                        longitud=len(habitacion.pacientesAsignados)
+                        if (habitacion.tipo == "compartida" and longitud < 2):
+                            habitacion.asignarPaciente(paciente)
+                            print("[    HABITACION ASIGNADA       ]")
+
+
+                        elif (habitacion.tipo == "privada" and longitud < 1):
+                            habitacion.asignarPaciente(paciente)
+                            print("[    HABITACION ASIGNADA       ]")
+
+                        else:
+
+                            print("[    HABITACION OCUPADA       ]")
+
                         print("")
                         print("En 2 segundos volveras al menu")
                         time.sleep(2)
                         
                     else:
                         print("")
-                        print("[    PACIENTE NO ENCONTRADO   ]")
+                        print("[    HABITACION NO ENCONTRADA   ]")
                         print("")
                         print("En 2 segundos volveras al menu")
                         time.sleep(2)
@@ -181,6 +186,7 @@ while (condicion):
                     print("")
                     print("[    PACIENTE NO ENCONTRADO   ]")
                     print("")
+                    time.sleep(2)
 
             ### Liberar habitacion ###
             elif (opcionSubmenu == "4"):
@@ -209,7 +215,6 @@ while (condicion):
                     print("En 2 segundos volveras al menu")
                     time.sleep(2)
 
-
             ### Verificar disponibilidad ###
             elif (opcionSubmenu == "5"):
                 numero = input("Numero de habitacion: ")
@@ -224,6 +229,7 @@ while (condicion):
                     print("[    HABITACION ENCONTRADA     ]")
                     print("")
                     disponible = habitacion.verificarDisponibilidad()
+                    
                     if (disponible == True):
                         print("[    HABITACION DISPONIBLE     ]")
                         print("")
@@ -282,34 +288,9 @@ while (condicion):
 
             ### Atender paciente ###
             elif (opcionSubmenu == "7"):
-                numeroPaciente= input("Introduzca el numero del paciente: ")
-                for x in hospital.listaPacientes:
-                    if x.numeroIdentificacion == numeroPaciente:
-                        print("")
-                        print("[    PACIENTE ENCONTRADO     ]")
-                        print("")
-                        numeroEnfermero= input("Introduzca el nuemro del Enfermero: ")
-                        for y in hospital.listaEnfermeros:
-                            if y.numeroIdentificacion == numeroEnfermero:
-                                print("")
-                                print("[    ENFERMERO ENCONTRADO     ]")
-                                print("")
-                                y.atenderPaciente(x)
-                                break
-
-                            else:
-                                print("")
-                                print("[    ENFERMERO no ENCONTRADO     ]")
-                                print("")
-
-                    else:
-                        print("")
-                        print("[    PACIENTE NO ENCONTRADO     ]")
-                        print("")
-                    break
+                break
 
             ### Actualizar informacion ###
-
             elif (opcionSubmenu == "8"):
                 numeroIdentificacion = input("Numero de identificacion del enfermero: ")
                 enfermeroEncontrado = False
@@ -392,63 +373,24 @@ while (condicion):
                 numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
                 for medico in hospital.listaMedicos:
                     if (medico.numeroIdentificacion == numeroIdentificacion):
+                        medicoEncontrdo = True
                         medico.actualizarInformacion()
                         break
                 
 
             elif (opcionSubmenu == "4"):
-                numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
-                num=input("Introduce el numero de consulta:  ")
-
-                for consulta in hospital.listaConsultas:
-                    if (consulta.numero == num):
-                        for medico in hospital.listaMedicos:
-                            if (medico.numeroIdentificacion == numeroIdentificacion):
-                                consulta.asignarMedico(medico)
-                                break
-
+                break
             elif (opcionSubmenu == "5"):
-                num=input("Introduce el numero de consulta:  ")
-
-                for consulta in hospital.listaConsultas:
-                    if (consulta.numero == num):
-                        for medico in hospital.listaMedicos:
-                            if (medico.numeroIdentificacion == numeroIdentificacion):
-                                consulta.liberarConsulta(medico)
-                                break
-
-
+                break
             elif (opcionSubmenu == "6"):
-                medicamento = input ("Introduce el nombre del medicamento: ")
-            
-                if (medicamento in farmacia1.medicamentosDisponibles):
-                    farmacia1.medicamentosDisponibles[medicamento]+=1
-                else:
-                    farmacia1.agregarMedicamento(medicamento)
                 break
-
             elif (opcionSubmenu == "7"):
-                medicamento = input ("Introduce el nombre del medicamento: ")
-                
-                if (medicamento in farmacia1.medicamentosDisponibles):
-                    del farmacia1.medicamentosDisponibles[medicamento]
-                else:
-                    farmacia1.eliminarMedicamento()
-                    break
-
-            elif (opcionSubmenu == "8"):
-                medicamento = input ("Introduce el nombre del medicamento: ")
-                
-                if (medicamento in farmacia1.medicamentosDisponibles and farmacia1.medicamentosDisponibles[medicamento]>0):
-                    farmacia1.medicamentosDisponibles[medicamento]-=1
-                else:
-                    farmacia1.obtenerMedicamento()
-                    break
                 break
-
+            elif (opcionSubmenu == "8"):
+                break
             elif (opcionSubmenu == "9"):
                 condicion2 =  False
-    ### SUBMENU MEDICO ###
+    ### SUBENU MEDICO ###
     ### SALIR ###
     elif (opcionMenu == "3"):
         condicion =  False
