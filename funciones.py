@@ -78,8 +78,10 @@ class Enfermero:
 
 
     def atenderPaciente(self, paciente):
-        paciente.historialMedico.append(input("Actualize el historial del paciente "+paciente.nombre+" "))
-        pass
+        paciente.historialMedico.append(input("Motivo del paciente '"+paciente.nombre+"':"))
+        print("")
+        print("[     HISTORIAL ACTUALIZADO     ]")
+        print("")
 
     def actualizarInformacion(self):
         print("[    DATOS     ]")
