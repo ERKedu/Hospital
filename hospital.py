@@ -106,7 +106,7 @@ while (condicion):
                         pacienteEncontrado = True
                         break
 
-                if (pacienteEncontrado == True):
+                if (pacienteEncontrado):
                     print("")
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
@@ -129,7 +129,7 @@ while (condicion):
                         pacienteEncontrado = True
                         break
 
-                if (pacienteEncontrado == True):
+                if (pacienteEncontrado):
                     print("")
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
@@ -149,7 +149,7 @@ while (condicion):
                         pacienteEncontrado = True
                         break
 
-                if (pacienteEncontrado == True):
+                if (pacienteEncontrado):
                     print("")
                     print("[    PACIENTE ENCONTRADO     ]")
                     print("")
@@ -160,7 +160,7 @@ while (condicion):
                             habitacionEncontrada = True    
                             break
 
-                    if (habitacionEncontrada == True):
+                    if (habitacionEncontrada):
                         print("")
                         print("[    HABITACION ENCONTRADA     ]")
                         print("")
@@ -204,7 +204,7 @@ while (condicion):
                         habitacionEncontrada = True
                         break
 
-                if (habitacionEncontrada == True):
+                if (habitacionEncontrada):
                     print("")
                     print("[    HABITACION ENCONTRADA     ]")
                     print("")
@@ -231,7 +231,7 @@ while (condicion):
                         habitacionEncontrada = True
                         break
 
-                if (habitacionEncontrada == True):
+                if (habitacionEncontrada):
                     print("")
                     print("[    HABITACION ENCONTRADA     ]")
                     print("")
@@ -264,7 +264,7 @@ while (condicion):
                         enfermeroEncontrado = True
                         break
 
-                if (enfermeroEncontrado == True):
+                if (enfermeroEncontrado):
                     print("")
                     print("[    ENFERMERO ENCONTRADO     ]")
                     print("")
@@ -274,7 +274,7 @@ while (condicion):
                         if (paciente.numeroIdentificacion == numPaciente):
                             pacienteEncontrado = True
                             break
-                    if (pacienteEncontrado == True):
+                    if (pacienteEncontrado):
                         print("")
                         print("[    PACIENTE ENCONTRADO     ]")
                         print("")
@@ -332,7 +332,7 @@ while (condicion):
                         enfermeroEncontrado = True
                         break
 
-                if (enfermeroEncontrado == True):
+                if (enfermeroEncontrado):
                     print("")
                     print("[    ENFERMERO ENCONTRADO     ]")
                     print("")

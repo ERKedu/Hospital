@@ -1,7 +1,3 @@
-- Cambiad las comparaciones de variables booleanas de la siguiente manera:
-    Antes: if (habitacionEncontrada == True):
-    Corrección: if (habitacionEncontrada):
-
 - En la función de liberarHabitacion(), la disponibilidad será True siempre y cuando no quede ningún paciente en la lista.
 Ahora mismo se queda disponible cuando se elimina a un paciente y queda otro.
 
