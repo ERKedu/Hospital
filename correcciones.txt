@@ -1,0 +1,18 @@
+- Cambiad las comparaciones de variables booleanas de la siguiente manera:
+    Antes: if (habitacionEncontrada == True):
+    Corrección: if (habitacionEncontrada):
+
+- En la función de liberarHabitacion(), la disponibilidad será True siempre y cuando no quede ningún paciente en la lista.
+Ahora mismo se queda disponible cuando se elimina a un paciente y queda otro.
+
+- En la función de atenderPaciente() de la clase enfermero, que se apunte también el nombre del enfermero. Por ejemplo:
+"El enfermero Tom actualiza el historial del paciente David"
+
+- En la función de asignarPaciente() de la clase médico, estáis buscando dos veces al paciente. Se lo podéis pasar directamente
+desde el menú cuando llamáis a la función, en lugar del número de identificación.
+
+- En la función de atenderPaciente() de la clase médico, estáis apuntando el nombre del paciente en lugar del nombre del médico.
+
+- Para asignar una consulta a un médico, hay que mirar que no esté ocupada ya por otro médico.
+
+- Id escribiendo comentarios para saber qué hace cada función.
