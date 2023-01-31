@@ -388,7 +388,7 @@ while (condicion):
 
                     for paciente in hospital.listaPacientes:
                         if (paciente.numeroIdentificacion == numeroIdentificacionPaciente):
-                            medicoEncontrado.asignarPaciente(numeroIdentificacionPaciente, hospital.listaPacientes)
+                            medicoEncontrado.asignarPaciente(paciente)
                             break
                 else:
                     print("El medico no ha sido encontrado")
@@ -416,10 +416,14 @@ while (condicion):
 
                 for consulta in hospital.listaConsultas:
                     if (consulta.numero == num):
-                        for medico in hospital.listaMedicos:
-                            if (medico.numeroIdentificacion == numeroIdentificacion):
-                                consulta.asignarMedico(medico)
-                                break
+                        if (consulta.medicoAsignado == ""):
+                            for medico in hospital.listaMedicos:
+                                if (medico.numeroIdentificacion == numeroIdentificacion):
+                                    consulta.asignarMedico(medico)
+                                    break
+                        else:
+                            print ("Consulta ocupada")
+                            break
 
             elif (opcionSubmenu == "5"):
                 num=input("Introduce el numero de consulta:  ")

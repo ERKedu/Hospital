@@ -1,4 +1,5 @@
-class Medico: 
+class Medico:
+    ### Constructor de la clase Medico ###
     def __init__(self, nombre, apellido1, apellido2, especialidad, numeroIdentificacion, horarioTrabajo, pacientesAsignados, consulta):
         self.nombre=nombre
         self.apellido1=apellido1
@@ -9,16 +10,15 @@ class Medico:
         self.pacientesAsignados=pacientesAsignados
         self.consulta=consulta
 
-    def asignarPaciente(self, numeroIdentificacion, listaPacientes): 
-        for paciente in listaPacientes:
-            if numeroIdentificacion == paciente.numeroIdentificacion:       
-                self.pacientesAsignados.append(paciente)
+    ### Funcion para asigna un paciente al mdeico ###
+    def asignarPaciente(self, paciente):      
+        self.pacientesAsignados.append(paciente)
 
-
+    ### Funcion para atender a un paciente ###
     def atenderPaciente(self, paciente):
         print ("Visita del médico ", paciente.nombre)
         
-
+    ### Funcion para actualizar la información del médico ###
     def actualizarInformacion(self):    
         nombre=input("Introduce el nombre: ")
         apellido1=input("Introduce el apellido1: ")
@@ -38,32 +38,38 @@ class Medico:
 
         print("Información actualizada")
 
+
 class Consulta:
+    ### Constructor de la clase Consulta ###
     def __init__(self, numero, medicoAsignado):
             self.numero=numero
             self.medicoAsignado=medicoAsignado
 
+    ### Funcion que asigna un médico a la consulta ###
     def asignarMedico(self, Medico):
         self.medicoAsignado = Medico
         Medico.consulta = self
 
+    ### Funcion para liberer una consulta ###
     def liberarConsulta(self, Medico):
         self.medicoAsignado = None
         Medico.consulta = None
 
 
 class Farmacia:
+    ### Constructor de la clase Farmacia ###
     def __init__(self, medicamentosDisponibles):
         self.medicamentosDisponibles = medicamentosDisponibles
 
+    ### Funcion para agregar un medicamento a la lista de medicamentos ###
     def agregarMedicamento(self, medicamento):
         self.medicamentosDisponibles[medicamento] = 1
         
-
+    ### Funcion para elimimnar un medicamento de la lista de medicamentos ###
     def eliminarMedicamento(self):
         print("El medicamento no existe")
         
-
+    ### Funcion para obtener un medicamento de la lista de medicamentos, restando 1 a la cantidad ###
     def obtenerMedicamento(self):
         print("El medicamento no existe")
         
