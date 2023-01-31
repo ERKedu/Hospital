@@ -395,11 +395,36 @@ while (condicion):
                      
             
             elif (opcionSubmenu == "2"):
-                numeroIdentificacion=input("Introduce el numero de identificación: ")                
-                for paciente in medico.pacientesAsignados:
-                    if numeroIdentificacion == paciente.numeroIdentificacion:
-                        medico.atenderPaciente(paciente)
+                numeroIdentificacion = input("Numero de identificacion del medico: ")
+                medicoEncontrado = False
+                for medico in hospital.listaMedicos:
+                    if (medico.numeroIdentificacion == numeroIdentificacion):
+                        medicoEncontrado = True
                         break
+
+                if (medicoEncontrado):
+                    print("")
+                    print("[    MEDICO ENCONTRADO     ]")
+                    print("")
+                    if (len(medico.pacientesAsignados) == 0):
+                        print("El medico no tiene pacientes asignados")
+
+                    else:
+                        for paciente in medico.pacientesAsignados:
+                            if numeroIdentificacion == paciente.numeroIdentificacion:
+                                medico.atenderPaciente(paciente)
+                                print("")
+                                print("[    PACIENTE ATENDIDO     ]")
+                                print("")
+                                break
+
+                else:
+                    print("")
+                    print("[    ENFERMERO NO ENCONTRADO   ]")
+                    print("")
+
+                break
+
 
 
             elif (opcionSubmenu == "3"):
@@ -457,7 +482,6 @@ while (condicion):
                     farmacia1.medicamentosDisponibles[medicamento]-=1
                 else:
                     farmacia1.obtenerMedicamento()
-                    break
                 break
 
             elif (opcionSubmenu == "9"):
