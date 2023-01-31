@@ -369,12 +369,13 @@ while (condicion):
             print("")
             print("[    FARMACIA    ]")
             print("6.- Agregar medicamento")
-            print("7.- ELiminar medicamento")
+            print("7.- Eliminar medicamento")
             print("8.- Obtener medicamento")
             print("")
             print("9.- Salir")
             opcionSubmenu = input("Introduce un numero: ")
             
+            ### Asignar paciente ###
             if (opcionSubmenu == "1"):
                 numeroIdentificacionMedico=input("Introduce el numero de identificación del medico: ")
                 medicoEncontrado = ""
@@ -393,7 +394,7 @@ while (condicion):
                 else:
                     print("El medico no ha sido encontrado")
                      
-            
+            ### Atender paciente ###
             elif (opcionSubmenu == "2"):
                 numeroIdentificacion = input("Numero de identificacion del medico: ")
                 medicoEncontrado = False
@@ -426,7 +427,7 @@ while (condicion):
                 break
 
 
-
+            ### Actualizar informacion ###
             elif (opcionSubmenu == "3"):
                 numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
                 for medico in hospital.listaMedicos:
@@ -434,7 +435,8 @@ while (condicion):
                         medicoEncontrdo = True
                         medico.actualizarInformacion()
                         break
-                
+            
+            ### Asignar medico ###
             elif (opcionSubmenu == "4"):
                 numeroIdentificacion=input("Introduce el numero de identificación del medico: ")
                 num=input("Introduce el numero de consulta:  ")
@@ -449,7 +451,8 @@ while (condicion):
                         else:
                             print ("Consulta ocupada")
                             break
-
+                        
+            ### Liberar consulta ###
             elif (opcionSubmenu == "5"):
                 num=input("Introduce el numero de consulta:  ")
 
@@ -460,7 +463,7 @@ while (condicion):
                                 consulta.liberarConsulta(medico)
                                 break
 
-
+            ### Agregar medicamento ###
             elif (opcionSubmenu == "6"):
                 medicamento = input ("Introduce el nombre del medicamento: ")
             
@@ -470,6 +473,7 @@ while (condicion):
                     farmacia1.agregarMedicamento(medicamento)
                 break
 
+            ### Eliminar medicamento ###
             elif (opcionSubmenu == "7"):
                 medicamento = input ("Introduce el nombre del medicamento: ")
                 
@@ -479,6 +483,7 @@ while (condicion):
                     farmacia1.eliminarMedicamento()
                     break
 
+            ### Obtener medicamento ###
             elif (opcionSubmenu == "8"):
                 medicamento = input ("Introduce el nombre del medicamento: ")
                 
