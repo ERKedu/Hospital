@@ -16,9 +16,13 @@ class Medico:
 
     ### Funcion para atender a un paciente ###
     def atenderPaciente(self, paciente):
-        print ("Visita del médico ", paciente.nombre)
-        
-    ### Funcion para actualizar la información del médico ###
+        mensaje = "El enfermero/a '" + self.nombre + "' ha visitado a '" + paciente.nombre + "'"
+        paciente.historialMedico.append(mensaje)
+        print(mensaje)
+        print("")
+        print("[     HISTORIAL ACTUALIZADO     ]")
+        print("")        
+
     def actualizarInformacion(self):    
         nombre=input("Introduce el nombre: ")
         apellido1=input("Introduce el apellido1: ")

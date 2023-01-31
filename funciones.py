@@ -86,7 +86,9 @@ class Enfermero:
 
     ### Esta función sirve para atender el paciente asignado ###
     def atenderPaciente(self, paciente):
-        paciente.historialMedico.append(input("Motivo del paciente '"+paciente.nombre+"':"))
+        mensaje = "El enfermero/a '" + self.nombre + "' actualiza el historial del paciente '" + paciente.nombre + "'"
+        paciente.historialMedico.append(mensaje)
+        print(mensaje)
         print("")
         print("[     HISTORIAL ACTUALIZADO     ]")
         print("")
