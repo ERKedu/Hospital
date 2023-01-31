@@ -44,8 +44,9 @@ hospital.listaConsultas.append(consulta1)
 hospital.listaConsultas.append(consulta2)
 
 ### Creamos diccionario de medicamentos ###
-farmacia1 = Farmacia({})
-
+file = open("medicamentos.txt", "r")
+farmacia1 = Farmacia({file.read()})
+file.close()
 
 ### Bucle para el menu ###
 condicion = True
@@ -451,7 +452,7 @@ while (condicion):
                         else:
                             print ("Consulta ocupada")
                             break
-                        
+
             ### Liberar consulta ###
             elif (opcionSubmenu == "5"):
                 num=input("Introduce el numero de consulta:  ")
